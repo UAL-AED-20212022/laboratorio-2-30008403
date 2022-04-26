@@ -4,9 +4,11 @@ def main():
     lista_ligada = LinkedList()
     while True:
         #Pede input na Consola
-        consola :str = input()
+        try:
         #Faz split do input por espaco ex: comandos[0],comandos[1],comandos[2],... 
-        comandos :list = consola.split(" ")
+            comandos :list = input().split(" ")
+        except EOFError:
+            return
         match comandos[0].upper():
             case "RPI": # registar uma país novo.
 
@@ -30,15 +32,15 @@ def main():
                 
             case "VNE": # Verifica o numero de elementos na lista.
 
-                print("O número de elementos "+ str(lista_ligada.get_count()))   
+                print("O número de elementos são "+ str(lista_ligada.get_count()) +"." )   
                 
             case "VP": # verifica se um país esta na lista.
 
                 if lista_ligada.search_item(comandos[1]) == False:
 
-                    print("O país " + str(comandos[1]) + " não se encontra na lista")
+                    print("O país " + str(comandos[1]) + " não se encontra na lista.")
                 else:
-                    print("O país " + str(comandos[1]) + " encontra na lista")
+                    print("O país " + str(comandos[1]) + " encontra-se na lista.")
                 
             case "EPE": # Elimina o primeiro elemento da lista.
                 print("O país " + lista_ligada.start_node.get_item() + " foi eliminado da lista")
@@ -46,16 +48,16 @@ def main():
                 lista_ligada.delete_at_start()
                 
             case "EUE": # Elimina o último elemento da lista.
-                print ("O país " + lista_ligada.get_last_node() + " foi eliminado da lista")
+                print ("O país " + lista_ligada.get_last_node() + " foi eliminado da lista.")
 
                 lista_ligada.delete_at_end()
 
             case "EP": # Elimina um páis indicado.
                 if lista_ligada.search_item(comandos[1]) == False:
-                    print("O país " + str(comandos[1]) + " não se encontra na lista")
+                    print("O país " + str(comandos[1]) + " não se encontra na lista.")
                 else:
                     lista_ligada.delete_element_by_value(comandos[1])
-                    print("O país " + str(comandos[1]) + " foi eliminado na lista")
+                    print("O país " + str(comandos[1]) + " foi eliminado da lista.")
             
         lista_ligada.traverse_list()
             

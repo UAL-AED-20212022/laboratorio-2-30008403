@@ -107,10 +107,10 @@ class LinkedList:
         n = self.start_node
         while n is not None:
             if n.item == x:
-                print("Item found")
+                print("item found")
                 return True
             n = n.ref
-        print("item bot found")
+        print("item not found")
         return False
 
 
